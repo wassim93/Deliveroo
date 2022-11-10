@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image } from "react-native";
+import { View, Text, SafeAreaView, Image, ScrollView } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import GlobalStyle from "../../GlobalStyle";
@@ -8,6 +8,7 @@ import HomeToolbar from "./components/HomeToolbar";
 import CustomInput from "../../shared/inputs/CustomInput";
 import KeyboardType from "../../utils/KeyboardType";
 import { AdjustmentsVerticalIcon } from "react-native-heroicons/outline";
+import CategoriesSlider from "./components/categories/CategoriesSlider";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -20,7 +21,7 @@ export default function HomeScreen() {
     <SafeAreaView style={GlobalStyle.droidSafeArea} className="bg-white pt-5">
       <MyStatusBar backgroundColor={BG_WHITE} barStyle="dark-content" />
       <HomeToolbar />
-      <View className="flex-row items-center space-x-2 px-5">
+      <View className="flex-row items-center space-x-2 mx-5 pb-4">
         <CustomInput
           placeholder={"Search for Restaurants"}
           keyboardType={KeyboardType.DEFAULT}
@@ -29,6 +30,9 @@ export default function HomeScreen() {
         />
         <AdjustmentsVerticalIcon size={20} color={"#00CCBB"} />
       </View>
+      <ScrollView className="bg-gray-100">
+        <CategoriesSlider />
+      </ScrollView>
     </SafeAreaView>
   );
 }
